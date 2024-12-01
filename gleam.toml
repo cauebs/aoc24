@@ -1,0 +1,15 @@
+name = "aoc"
+version = "0.1.0"
+gleam = ">= 1.6.2"
+
+[dependencies]
+gleam_stdlib = ">= 0.45.0 and < 1.0.0"
+question = ">= 1.0.0 and < 2.0.0"
+simplifile = ">= 2.2.0 and < 3.0.0"
+gleam_http = ">= 3.7.1 and < 4.0.0"
+gleam_httpc = ">= 4.0.0 and < 5.0.0"
+gleam_regexp = ">= 1.0.0 and < 2.0.0"
+party = ">= 1.0.5 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = "~> 1.0"
