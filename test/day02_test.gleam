@@ -1,38 +1,38 @@
 import aoc.{obtain_input}
-import day01.{parse, solve_part1, solve_part2}
+import day02.{parse, solve_part1, solve_part2}
 import gleeunit/should
 
-const example = "3   4
-4   3
-2   5
-1   3
-3   9
-3   3"
+const example = "7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9"
 
 pub fn part1_example_test() {
   example
   |> parse
   |> solve_part1
-  |> should.equal(11)
+  |> should.equal(2)
 }
 
 pub fn part1_test() {
-  obtain_input(1)
+  obtain_input(2)
   |> parse
   |> solve_part1
-  |> should.equal(1_879_048)
+  |> should.equal(287)
 }
 
 pub fn part2_example_test() {
   example
   |> parse
   |> solve_part2
-  |> should.equal(31)
+  |> should.equal(4)
 }
 
 pub fn part2_test() {
-  obtain_input(1)
+  obtain_input(2)
   |> parse
   |> solve_part2
-  |> should.equal(21_024_792)
+  |> should.equal(354)
 }

@@ -75,7 +75,7 @@ pub fn solve_part2(input: Input) -> Solution2 {
   int.sum(scores)
 }
 
-/// Main
+/// Main -------------------------------------------------------------------------------------------
 pub fn main() {
   let input = obtain_input(1) |> parse
 

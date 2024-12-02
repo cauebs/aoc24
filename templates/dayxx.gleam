@@ -23,7 +23,7 @@ pub fn solve_part2(input: Input) -> Solution2 {
   todo as "Solution for part 2 not implemented"
 }
 
-/// Main
+/// Main -------------------------------------------------------------------------------------------
 pub fn main() {
   let input = obtain_input($x) |> parse
 
