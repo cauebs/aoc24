@@ -3,7 +3,6 @@ import gleam/int
 import gleam/io
 import gleam/list
 import gleam/otp/task
-import gleam/result
 import party
 
 pub type Equation {
@@ -55,42 +54,37 @@ fn apply(op: Operator, lhs: Int, rhs: Int) -> Int {
   }
 }
 
-fn operator_arrangements(
-  length: Int,
-  possible_operators: List(Operator),
-) -> List(List(Operator)) {
-  case length {
-    0 -> [[]]
-    _ -> {
-      use rest <- list.flat_map(operator_arrangements(
-        length - 1,
-        possible_operators,
-      ))
-      use first <- list.map(possible_operators)
-      [first, ..rest]
+fn could_be_true_aux(
+  from accum: Int,
+  with numbers: List(Int),
+  targeting target: Int,
+  trying operators: List(Operator),
+) -> Bool {
+  case numbers {
+    [] -> accum == target
+    [number, ..rest] -> {
+      operators
+      |> list.map(apply(_, accum, number))
+      |> list.any(fn(result) {
+        could_be_true_aux(
+          from: result,
+          with: rest,
+          targeting: target,
+          trying: operators,
+        )
+      })
     }
   }
 }
 
-fn resolve_aux(accum: Int, numbers: List(Int), operators: List(Operator)) -> Int {
-  case operators, numbers {
-    [op, ..other_operators], [n, ..other_numbers] ->
-      resolve_aux(apply(op, accum, n), other_numbers, other_operators)
-    _, _ -> accum
-  }
-}
-
-fn resolve(numbers: List(Int), operators: List(Operator)) -> Int {
-  let assert [first_number, ..rest] = numbers
-  resolve_aux(first_number, rest, operators)
-}
-
 fn could_be_true(equation: Equation, possible_operators: List(Operator)) -> Bool {
-  operator_arrangements(list.length(equation.numbers) - 1, possible_operators)
-  |> list.find(fn(operators) {
-    resolve(equation.numbers, operators) == equation.test_value
-  })
-  |> result.is_ok
+  let assert [first_number, ..rest] = equation.numbers
+  could_be_true_aux(
+    from: first_number,
+    with: rest,
+    targeting: equation.test_value,
+    trying: possible_operators,
+  )
 }
 
 pub fn solve_part1(input: Input) -> Solution1 {
