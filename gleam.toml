@@ -3,15 +3,15 @@ version = "0.1.0"
 gleam = ">= 1.6.2"
 
 [dependencies]
-gleam_stdlib = ">= 0.45.0 and < 1.0.0"
+gleam_stdlib = ">= 0.46.0 and < 1.0.0"
 question = ">= 1.0.0 and < 2.0.0"
 simplifile = ">= 2.2.0 and < 3.0.0"
-gleam_http = ">= 3.7.1 and < 4.0.0"
+gleam_http = ">= 3.7.2 and < 4.0.0"
 gleam_httpc = ">= 4.0.0 and < 5.0.0"
 gleam_regexp = ">= 1.0.0 and < 2.0.0"
 party = ">= 1.0.5 and < 2.0.0"
-gleam_otp = ">= 0.14.1 and < 1.0.0"
+gleam_otp = ">= 0.15.0 and < 1.0.0"
 gleam_yielder = ">= 1.1.0 and < 2.0.0"
 
 [dev-dependencies]
-gleeunit = "~> 1.0"
+gleeunit = ">= 1.2.0 and < 2.0.0"
